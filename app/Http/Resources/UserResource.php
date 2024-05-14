@@ -26,7 +26,7 @@ class UserResource extends JsonResource
                 $this->email
             ),
             'registered_at' => $this->created_at,
-            // 'orders' => $this-> ,
+            'orders' => OrderResource::collection($this->whenLoaded('orders')),
         ];
     }
 }

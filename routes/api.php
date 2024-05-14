@@ -11,11 +11,9 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 Route::get('/test', function() {
     
-    $user = User::first();
+    $user = User::with('orders')->first();
 
     auth()->loginUsingId(11);
 
-    // dd(User::all());
-
-    return UserResource::collection(User::paginate(5));
+    return UserResource::collection(User::with('orders.user')->paginate(5));
 });

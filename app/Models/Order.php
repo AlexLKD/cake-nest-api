@@ -13,4 +13,8 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function cupcake() {
+        return $this->hasMany(Cupcake::class);
+    }
 }
