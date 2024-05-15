@@ -14,6 +14,25 @@ class CupcakeResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'message' => $this->getMessage($request),
+            'id' => $this->id,
+            'name' => $this->name,
+            'image' => $this->image,
+            'quantity' => $this->quantity,
+            'price' => $this->price,
+        ];
+    }
+
+    protected function getMessage(Request $request) {
+
+        $routeMessageMap = collect([
+            'cupcakes.store' => 'Create Successful',
+            'cupcakes.update' => 'Update Successful',
+            'cupcakes.index' => 'Show Successful',
+            'cupcakes.destroy' => 'Delete Successful',
+        ]);
+
+        return $routeMessageMap->get($request->route()->getName(), null);
     }
 }

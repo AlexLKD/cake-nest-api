@@ -14,10 +14,10 @@ class UserResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        // return parent::toArray($request);
         // auth()->loginUsingId($this->id);
         // dd(auth()->user());
         return [
+            'message' => $this->getMessage($request),
             'id' => $this->id,
             'name'=> $this->name,
             // 'email' => $this->email,
@@ -26,7 +26,20 @@ class UserResource extends JsonResource
                 $this->email
             ),
             'registered_at' => $this->created_at,
+            'is_admin' => (bool) $this->is_admin,
             'orders' => OrderResource::collection($this->whenLoaded('orders')),
         ];
+    }
+
+    protected function getMessage(Request $request) {
+
+        $routeMessageMap = collect([
+            'users.store' => 'Create Successful',
+            'users.update' => 'Update Successful',
+            'users.index' => 'Show Successful',
+            'users.destroy' => 'Delete Successful',
+        ]);
+
+        return $routeMessageMap->get($request->route()->getName(), null);
     }
 }
