@@ -29,7 +29,8 @@ class CupcakeResource extends JsonResource
         $routeMessageMap = collect([
             'cupcakes.store' => 'Create Successful',
             'cupcakes.update' => 'Update Successful',
-            'cupcakes.index' => 'Show Successful',
+            'cupcakes.index' => 'Show All Successful',
+            'cupcakes.show' => 'Show One Successful',
             'cupcakes.destroy' => 'Delete Successful',
         ]);
 

@@ -36,7 +36,8 @@ class UserResource extends JsonResource
         $routeMessageMap = collect([
             'users.store' => 'Create Successful',
             'users.update' => 'Update Successful',
-            'users.index' => 'Show Successful',
+            'users.index' => 'Show All Successful',
+            'users.show' => 'Show One Successful',
             'users.destroy' => 'Delete Successful',
         ]);
 
