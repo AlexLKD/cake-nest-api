@@ -33,10 +33,6 @@ class UserController extends Controller
 
         $user->update($validated);
         return (new UserResource($user))->response()->setStatusCode(201);
-        return response()->json([
-            'message' => 'User modifié avec succès!',
-            'user' => new UserResource($user),
-        ], 201);
     }
 
     public function destroy(User $user)
