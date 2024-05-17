@@ -14,7 +14,14 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function cupcake() {
-        return $this->hasMany(Cupcake::class);
+    // public function cupcake() {
+    //     return $this->hasMany(Cupcake::class);
+    // }
+
+    public function cupcakes()
+    {
+        return $this->belongsToMany(Cupcake::class, 'order_cupcake')
+                    ->withPivot('quantity')
+                    ->withPivot('total_price');
     }
 }

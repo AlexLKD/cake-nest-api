@@ -37,7 +37,7 @@ class UserResource extends JsonResource
             'users.store' => 'Create Successful',
             'users.update' => 'Update Successful',
             'users.index' => 'Show All Successful',
-            'users.show' => 'Show One Successful',
+            'users.show' => 'Show User number ' . $this->id . ' Successful',
             'users.destroy' => 'Delete Successful',
         ]);
 
